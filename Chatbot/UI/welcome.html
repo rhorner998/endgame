@@ -1,0 +1,52 @@
+<!-- welcome.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Welcome Page</title>
+</head>
+<body>
+<div id="welcome-page">
+    <h1>Welcome to the Chat Page!</h1>
+    <div class="input-container">
+        <textarea class="large-input" placeholder="Enter something..."></textarea>
+    </div>
+    <div class="output-container">
+        <textarea class="output-box" readonly></textarea>
+    </div>
+
+    <button onclick="processInput()">Process Input</button>
+    <button onclick="clearInputAndOutput()">Clear Input/Output</button>
+    <button onclick="clearChatHistory()">Clear Chat History</button>
+
+    <div id="chat-history">
+        <h2>Chat History</h2>
+        <div id="chat-history-template" style="display: none">
+            {{#each chatMessages}}
+            <div>{{this}}</div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script id="welcome-template" type="text/x-handlebars-template">
+    <h2>Chat History</h2>
+    {{#each chatMessages}}
+    <div>{{this}}</div>
+    {{/each}}
+</script>
+<script id="input-template" type="text/x-handlebars-template">
+    <div class="input-container">
+        <textarea class="large-input" placeholder="Enter something...">{{inputValue}}</textarea>
+    </div>
+</script>
+<script id="output-template" type="text/x-handlebars-template">
+    <div class="output-container">
+        <textarea class="output-box" readonly>{{outputValue}}</textarea>
+    </div>
+</script>
+<script src="./assets/js/welcomePage.js"></script>
+</body>
+</html>
